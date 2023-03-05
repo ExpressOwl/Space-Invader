@@ -25,7 +25,18 @@ let shipImg;
 let shipVelocityX = tileSize; //ship moving speed
 
 // Aliens
+let alienArray = [];
+let alienWidth = tileSize * 2;
+let alienHeight = tileSize;
+let alienX = tileSize;
+let alienY = tileSize;
+let alienImg;
 
+let alienRows = 2;
+let alienColumns = 3;
+let alienCount = 0; // number of aliens to shoot
+
+// Overall functions
 window.onload = function () {
   board = document.getElementById("board");
   board.width = boardWidth;
@@ -58,4 +69,8 @@ function moveShip(e) {
   } else if (e.code == 'ArrowRight' && ship.x + shipVelocityX + ship.width <= board.width) {
     ship.x += shipVelocityX; // move Right one tile
   }
+}
+
+function createAliens() {
+  
 }
