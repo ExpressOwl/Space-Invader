@@ -71,6 +71,7 @@ function update() {
   requestAnimationFrame(update);
 
   if (gameOver) {
+    context.fillText("GAME OVER", 5, 90);
     return;
   }
 
@@ -147,7 +148,13 @@ function update() {
 
 function moveShip(e) {
   if (gameOver) {
-    return;
+    alienArray = [];
+    alienCount = 0;
+    alienVelocityX = 0.5;
+    alienRows = 2;
+    alienColumns = 3;
+    score = 0;
+    gameOver = false;
   }
 
   if (e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0) {
@@ -158,6 +165,7 @@ function moveShip(e) {
   ) {
     ship.x += shipVelocityX; // move Right one tile
   }
+
 }
 
 function createAliens() {
