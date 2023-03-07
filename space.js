@@ -35,7 +35,7 @@ let alienImg;
 let alienRows = 2;
 let alienColumns = 3;
 let alienCount = 0; // number of aliens to shoot
-let alienVelocityX = 0.5; // Moving speed
+let alienVelocityX = 1; // Moving speed
 
 let score = 0;
 let gameOver = false;
@@ -67,7 +67,13 @@ window.onload = function () {
   document.addEventListener("keyup", shoot);
 };
 
-function update() {
+function update(time) {
+  let lastTime;
+  if (lastTime != null) {
+    const delta = time - lastTime
+  }
+
+  lastTime = time;
   requestAnimationFrame(update);
 
   if (gameOver) {
@@ -132,9 +138,9 @@ function update() {
   // next alien army
   if (alienCount == 0) {
     // increase the number of aliens in columns and rows by 1
-    alienColumns = Math.min(alienColumns + 1, columns / 2 -2); // means the cap is 16 / 2 - 2 = 6 columns
+    alienColumns = Math.min(alienColumns + 1, columns / 2 - 1); // means the cap is 16 / 2 - 2 = 6 columns
     alienRows = Math.min(alienRows + 1, rows - 4) // aliens do not exceed 16 - 4 rows, 12 rows max
-    alienVelocityX += 0.2; // increases speed every level
+    alienVelocityX += 0.3; // increases speed every level
     alienArray = [];
     laserArray = [];
     createAliens();
@@ -150,9 +156,9 @@ function moveShip(e) {
   if (gameOver) {
     alienArray = [];
     alienCount = 0;
-    alienVelocityX = 0.5;
-    alienRows = 2;
-    alienColumns = 3;
+    alienVelocityX = 1;
+    alienRows = 1;
+    alienColumns = 2;
     score = 0;
     gameOver = false;
   }
